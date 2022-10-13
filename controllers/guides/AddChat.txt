@@ -1,0 +1,38 @@
+//                                                                                                   
+//                                     3. Check if they have         4. If they have                 
+//                                  permission for Channel with      permission then                 
+//                                      ChannelId's members          save Chat to DB                 
+//                       ┌──────────────────┐       ┌──────────────────┐         ┌──────────────────┐
+//┌─────────┐            │                  │       │                  │         │                  │
+//│ Models: │            │      Users       │──────▶│     Channels     │────────▶│      Chats       │
+//└─────────┘            │                  │       │                  │         │                  │
+//                       └──────────────────┘       └──────────────────┘         └──────────────────┘
+//                                 ▲                                                       │         
+//                                 │                                                       │         
+//                      2. Find User w/ Email                                              │         
+//                                 │                                            5. Send Chat message 
+//                                 │                                                  to Socket      
+//┌─────────────┐          ┌───────────────┐                                               │         
+//│ Controllers:│          │    AddChat    │                                               │         
+//└─────────────┘          └───────────────┘                                               │         
+//                                 ▲                                                       │         
+//                                 │                                                       ▼         
+//                     Routing Maps Controller                                   ┌──────────────────┐
+//                                 │                                             │                  │
+//                                 │                                             │    Socket.io     │
+//                    ┌────────────────────────┐                                 │                  │
+//┌──────────────┐    │         post:          │                                 └──────────────────┘
+//│  Requests:   │    │  /add-chat/:channelID  │                                           │         
+//└──────────────┘    └────────────────────────┘                                           │         
+//                                 ▲                                                       │         
+//                                 │                                                       │         
+//                     1. Send Message & ChannelID                                         │         
+//                                 │                                                       │         
+//                                 │                                                       │         
+//                                 │                                                       │         
+//                                 │                                                       │         
+//                       ┌──────────────────┐                                              │         
+//                       │                  │                                              │         
+//                       │      Client      │◀────6. Emit Chat message to all listeners────┘         
+//                       │                  │                                                        
+//                       └──────────────────┘                                                        

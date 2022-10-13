@@ -1,0 +1,29 @@
+{
+    "name": "alternator",
+    "version": "1.0.0",
+    "description": "Websockets for Chats",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DealStryker/Alternator.git"
+    },
+    "author": "BradleyJHumble",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/DealStryker/Alternator/issues"
+    },
+    "homepage": "https://github.com/DealStryker/Alternator#readme",
+    "dependencies": {
+        "aws-sdk": "^2.1033.0",
+        "axios": "^0.24.0",
+        "config": "^3.3.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.1",
+        "express": "^4.17.1",
+        "mongoose": "^6.0.12",
+        "socket.io": "^4.3.1"
+    }
+}

@@ -1,0 +1,43 @@
+//                                                                                                                     
+//                                                                  ┌──────────────────┐                               
+//                                                                  │                  │                 6. Get all    
+//                                                                  │       Bids       │────────────────Channels with  
+//                                                                  │                  │              UserID in Channel
+//                                                                  └──────────────────┘ 5. If not                │    
+//                                                                            ▲          then make                │    
+//  ┌──────────────┐                     3. Get list of                       └────────Channel with ──┐           │    
+//  │   Models:    │                   Offers w/ UserId by                               Bid info     │           │    
+//  └──────────────┘                    searching members                                             │           │    
+//                    ┌──────────────────┐            ┌──────────────────┐  4. See if all   ┌──────────────────┐  │    
+//                    │                  │            │                  │  Offers have a   │                  │  │    
+//                    │      Users       │───────────▶│      Offers      │ ─corresponding ─▶│     Channel      │◀─┘    
+//                    │                  │            │                  │     Channel      │                  │       
+//                    └──────────────────┘            └──────────────────┘                  └──────────────────┘       
+//                              ▲                                                                     │                
+//                              │                                                                     │                
+//                              └────────────────────────────┐         ┌──────────────────────────────┘                
+//                                2. Get UserId w/ Email     │         │        7. Get Channels and                    
+//                                                           │         │        Sort by LastActive                     
+//                                                           │         ▼                                               
+//  ┌──────────────┐                                     ┌────────────────┐                                            
+//  │ Controllers: │                                     │  ListChannels  │                                            
+//  └──────────────┘                                     └────────────────┘                                            
+//                                                           ▲         │                                               
+//                                                           │         │                                               
+//                                                     Routing Maps Controller                                         
+//                                                           │         │                                               
+//                                                           │         ▼                                               
+//  ┌──────────────┐                                 ┌─────────────────────────┐                                       
+//  │  Requests:   │                                 │          get:           │                                       
+//  └──────────────┘                                 │  /list-channels/:email  │                                       
+//                                                   └─────────────────────────┘                                       
+//                                                           ▲          │                                              
+//                                                           │          │   8. Client                                  
+//                                                    1. Send Email     │   receives                                   
+//                                                           │          │  Channels in                                 
+//                                                           │          ▼     Json                                     
+//                                                       ┌──────────────────┐                                          
+//                                                       │                  │                                          
+//                                                       │      Client      │                                          
+//                                                       │                  │                                          
+//                                                       └──────────────────┘                                          
